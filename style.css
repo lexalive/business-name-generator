@@ -203,7 +203,14 @@ h2 {
     color: var(--text);
 }
 
-.name button {
+.name-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.name button,
+.secondary-button {
     width: auto;
     padding: 8px 14px;
     font-size: 0.95rem;
@@ -213,8 +220,33 @@ h2 {
     border: 1px solid rgba(139, 92, 246, 0.22);
 }
 
-.name button:hover {
+.name button:hover,
+.secondary-button:hover {
     background: rgba(139, 92, 246, 0.24);
+}
+
+.icon-button {
+    min-width: 38px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.icon-button.is-favorite {
+    background: rgba(255, 107, 107, 0.18);
+    color: #ff7b7b;
+    border-color: rgba(255, 107, 107, 0.28);
+}
+
+.actions-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    border-color: var(--border);
 }
 
 @keyframes fadeUp {
@@ -263,6 +295,59 @@ h2 {
 }
 
 .examples strong {
+    color: var(--accent-2);
+}
+
+.about-section {
+    margin: 24px 0 28px;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.about-section h2 {
+    margin: 0 0 8px;
+}
+
+.about-section p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.results-summary {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+}
+
+.site-footer a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
     color: var(--accent-2);
 }
 

@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate fresh, modern business name ideas instantly with this AI-powered business name generator.">
+    <meta name="description" content="Generate unique business names instantly with AI. Find brandable, memorable names for startups, ecommerce stores, agencies, and more.">
     <meta name="keywords" content="business name generator, AI business names, startup naming tool, company name ideas">
     <meta name="author" content="Your Name">
-    <title>NameKindle | AI Business Name Generator</title>
+    <meta property="og:title" content="AI Business Name Generator | NameKindle">
+    <meta property="og:description" content="Generate unique business names instantly with AI. Find brandable, memorable names for startups, ecommerce stores, agencies, and more.">
+    <meta property="og:image" content="https://namekindle.com/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://namekindle.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Business Name Generator | NameKindle">
+    <meta name="twitter:description" content="Generate unique business names instantly with AI. Find brandable, memorable names for startups, ecommerce stores, agencies, and more.">
+    <meta name="twitter:image" content="https://namekindle.com/favicon.svg">
+    <title>AI Business Name Generator | NameKindle</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
@@ -28,7 +37,16 @@
             <button id="generateButton" type="button">Generate Names</button>
         </div>
 
-        <h2>Your Business Name Ideas</h2>
+        <section class="about-section" aria-labelledby="about-title">
+            <h2 id="about-title">About NameKindle</h2>
+            <p>NameKindle is a free AI-powered business name generator that helps entrepreneurs, creators, and startups discover unique brand names in seconds. Whether you need a modern startup name, a memorable company name, or a fresh brand identity, NameKindle makes the naming process fast, simple, and inspiring.</p>
+        </section>
+
+        <div class="results-header">
+            <h2>Your Business Name Ideas</h2>
+            <button id="regenerateButton" type="button" class="secondary-button">Generate another set</button>
+        </div>
+        <p id="resultsSummary" class="results-summary">Start with a keyword to generate fresh ideas.</p>
         <div id="results" class="results" aria-live="polite"></div>
 
         <p class="examples">
@@ -39,6 +57,13 @@
             <strong>travel</strong>, or
             <strong>fashion</strong>.
         </p>
+
+        <footer class="site-footer">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About NameKindle</a>
+        </footer>
     </div>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
