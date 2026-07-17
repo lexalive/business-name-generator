@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate unique business names instantly with AI. Find brandable, memorable names for startups, ecommerce stores, agencies, and more.">
     <meta name="keywords" content="business name generator, AI business names, startup naming tool, company name ideas">
-    <meta name="author" content="Your Name">
+    <meta name="author" content="NameKindle">
     <meta property="og:title" content="AI Business Name Generator | NameKindle">
     <meta property="og:description" content="Generate unique business names instantly with AI. Find brandable, memorable names for startups, ecommerce stores, agencies, and more.">
     <meta property="og:image" content="https://namekindle.com/favicon.svg">
@@ -15,6 +15,7 @@
     <meta name="twitter:title" content="AI Business Name Generator | NameKindle">
     <meta name="twitter:description" content="Generate unique business names instantly with AI. Find brandable, memorable names for startups, ecommerce stores, agencies, and more.">
     <meta name="twitter:image" content="https://namekindle.com/favicon.svg">
+    <link rel="canonical" href="https://namekindle.com/">
     <title>AI Business Name Generator | NameKindle</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -34,12 +35,33 @@
                 <label for="idea" class="sr-only">Describe your idea</label>
                 <input type="text" id="idea" name="idea" placeholder="Enter a keyword (example: coffee)">
             </div>
+            <div class="field-group field-group--compact">
+                <label for="category" class="sr-only">Choose a naming category</label>
+                <select id="category" name="category">
+                    <option value="general">General business</option>
+                    <option value="tech">Tech startup</option>
+                    <option value="food">Food &amp; beverage</option>
+                    <option value="beauty">Beauty &amp; wellness</option>
+                    <option value="creative">Creative studio</option>
+                </select>
+            </div>
             <button id="generateButton" type="button">Generate Names</button>
         </div>
 
         <section class="about-section" aria-labelledby="about-title">
             <h2 id="about-title">About NameKindle</h2>
             <p>NameKindle is a free AI-powered business name generator that helps entrepreneurs, creators, and startups discover unique brand names in seconds. Whether you need a modern startup name, a memorable company name, or a fresh brand identity, NameKindle makes the naming process fast, simple, and inspiring.</p>
+        </section>
+
+        <section class="link-grid" aria-labelledby="niche-title">
+            <h2 id="niche-title">Popular niche generators</h2>
+            <div class="link-card-list">
+                <a class="link-card" href="tech-startup-name-generator.html">Tech startup names</a>
+                <a class="link-card" href="food-brand-name-generator.html">Food brand names</a>
+                <a class="link-card" href="beauty-brand-name-generator.html">Beauty brand names</a>
+                <a class="link-card" href="fashion-brand-name-generator.html">Fashion brand names</a>
+                <a class="link-card" href="real-estate-company-name-generator.html">Real estate company names</a>
+            </div>
         </section>
 
         <div class="results-header">
@@ -68,6 +90,20 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "NameKindle",
+            "url": "https://namekindle.com/",
+            "description": "AI-powered business name generator for startups, ecommerce brands, and modern companies.",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://namekindle.com/?idea={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

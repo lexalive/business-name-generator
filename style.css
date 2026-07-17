@@ -87,7 +87,12 @@ h1 {
     flex: 1;
 }
 
-input {
+.field-group--compact {
+    flex: 0 0 220px;
+}
+
+input,
+select {
     width: 100%;
     padding: 14px 16px;
     font-size: 16px;
@@ -98,9 +103,19 @@ input {
     outline: none;
 }
 
-input:focus {
+input:focus,
+select:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.22);
+}
+
+select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--accent-2) 50%), linear-gradient(135deg, var(--accent-2) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 14px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    color: var(--text);
 }
 
 button {
@@ -306,6 +321,31 @@ h2 {
     background: rgba(255, 255, 255, 0.03);
 }
 
+.link-grid {
+    margin: 0 0 28px;
+}
+
+.link-card-list {
+    display: grid;
+    gap: 10px;
+}
+
+.link-card {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--accent-2);
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.link-card:hover {
+    border-color: rgba(139, 92, 246, 0.35);
+    transform: translateY(-1px);
+}
+
 .about-section h2 {
     margin: 0 0 8px;
 }
@@ -360,12 +400,25 @@ h2 {
         padding: 24px 18px;
     }
 
+    .hero {
+        text-align: left;
+    }
+
     .input-panel {
         flex-direction: column;
+    }
+
+    .field-group--compact {
+        flex-basis: auto;
     }
 
     .name {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .name-actions {
+        width: 100%;
+        justify-content: flex-start;
     }
 }

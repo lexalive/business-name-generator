@@ -2,10 +2,35 @@ const generateButton = document.getElementById("generateButton");
 const results = document.getElementById("results");
 const toast = document.getElementById("toast");
 const ideaInput = document.getElementById("idea");
+const categorySelect = document.getElementById("category");
 const resultsSummary = document.getElementById("resultsSummary");
 const regenerateButton = document.getElementById("regenerateButton");
 let currentKeyword = "";
+let currentCategory = "general";
 let generatedNames = [];
+
+const nameBanks = {
+    general: {
+        prefixes: ["Nova", "Prime", "Blue", "Bright", "Smart", "Urban", "Elite", "Next", "True", "Peak"],
+        suffixes: ["Hub", "Labs", "Studio", "Works", "Co", "Group", "Solutions", "Media", "HQ", "Central"]
+    },
+    tech: {
+        prefixes: ["Pixel", "Quantum", "Signal", "Vector", "Cipher", "Nexus", "Byte", "Apex", "Orbit", "Forge"],
+        suffixes: ["AI", "Labs", "Cloud", "Tech", "Stack", "IO", "Labs", "X", "Works", "Systems"]
+    },
+    food: {
+        prefixes: ["Harvest", "Brew", "Crumb", "Savor", "Sprout", "Whisk", "Golden", "Cedar", "Flour", "Roast"],
+        suffixes: ["Kitchen", "House", "Bar", "Co", "Market", "Bakes", "Table", "Cafe", "Nook", "Craft"]
+    },
+    beauty: {
+        prefixes: ["Luxe", "Glow", "Velvet", "Aura", "Pure", "Halo", "Bloom", "Opal", "Serene", "Dove"],
+        suffixes: ["Studio", "Beauty", "Co", "Lab", "House", "Wellness", "Bar", "Collective", "Edit", "Salon"]
+    },
+    creative: {
+        prefixes: ["Canvas", "Craft", "Studio", "Motive", "North", "Artisan", "Vivid", "Echo", "Foundry", "Frame"],
+        suffixes: ["Works", "Collective", "Lab", "House", "Guild", "Studio", "Co", "Agency", "Creative", "One"]
+    }
+};
 
 function renderEmptyState(title, description) {
     results.innerHTML = `
@@ -28,6 +53,7 @@ function setLoadingState(isLoading) {
 
 function generateNames() {
     const keyword = ideaInput.value.trim();
+    const category = categorySelect.value;
 
     if (keyword === "") {
         renderEmptyState("Start with an idea", "Enter a word like coffee, travel, or tech to get inspired.");
@@ -35,6 +61,7 @@ function generateNames() {
     }
 
     currentKeyword = keyword;
+    currentCategory = category;
     setLoadingState(true);
     regenerateButton.style.display = "inline-flex";
     results.innerHTML = `
@@ -45,31 +72,9 @@ function generateNames() {
     `;
     results.classList.remove("has-results");
 
-    const prefixes = [
-        "Nova",
-        "Prime",
-        "Blue",
-        "Bright",
-        "Smart",
-        "Urban",
-        "Elite",
-        "Next",
-        "True",
-        "Peak"
-    ];
-
-    const suffixes = [
-        "Hub",
-        "Labs",
-        "Studio",
-        "Works",
-        "Co",
-        "Group",
-        "Solutions",
-        "Media",
-        "HQ",
-        "Central"
-    ];
+    const bank = nameBanks[category] || nameBanks.general;
+    const prefixes = bank.prefixes;
+    const suffixes = bank.suffixes;
 
     window.setTimeout(() => {
         results.innerHTML = "";
@@ -82,7 +87,18 @@ function generateNames() {
             do {
                 prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
                 suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-                businessName = `${prefix} ${keyword} ${suffix}`;
+
+                if (category === "tech") {
+                    businessName = `${prefix} ${keyword}${suffix}`;
+                } else if (category === "food") {
+                    businessName = `${prefix} ${keyword}`;
+                } else if (category === "beauty") {
+                    businessName = `${prefix} ${keyword} ${suffix}`;
+                } else if (category === "creative") {
+                    businessName = `${keyword} ${suffix}`;
+                } else {
+                    businessName = `${prefix} ${keyword} ${suffix}`;
+                }
             } while (usedNames.has(businessName));
 
             usedNames.add(businessName);
@@ -119,7 +135,7 @@ function generateNames() {
         }
 
         results.classList.add("has-results");
-        resultsSummary.textContent = `Generated ${generatedNames.length} unique business names for “${keyword}”.`;
+        resultsSummary.textContent = `Generated ${generatedNames.length} unique business names for “${keyword}” in the ${categorySelect.options[categorySelect.selectedIndex].text.toLowerCase()} category.`;
         setLoadingState(false);
     }, 450);
 }
@@ -162,6 +178,12 @@ regenerateButton.addEventListener("click", () => {
         generateNames();
     } else {
         renderEmptyState("Start with an idea", "Enter a word like coffee, travel, or tech to get inspired.");
+    }
+});
+
+categorySelect.addEventListener("change", () => {
+    if (currentKeyword) {
+        generateNames();
     }
 });
 
